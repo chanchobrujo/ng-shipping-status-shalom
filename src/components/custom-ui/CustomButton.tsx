@@ -1,20 +1,20 @@
 import React from "react";
-import {ButtonProperties} from "../model/properties";
+import {ButtonProperties} from "../../model/properties";
 
 function CustomButton(props: ButtonProperties) {
   return (
     <div style={{
-      borderRadius: '10%',
       width: '100%',
       cursor: 'pointer',
       textAlign: 'center',
+      borderRadius: '10%',
       backgroundColor: props.contentColor || 'white'
     }}>
-      <h2 style={{
+      <h3 style={{
         color: props.titleColor
       }}>
         {props.title}
-      </h2>
+      </h3>
     </div>
   );
 }

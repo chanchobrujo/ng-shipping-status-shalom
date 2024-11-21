@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {InputProperties} from "../model/properties";
+import {InputProperties} from "../../model/properties";
 
 function CustomInput(props: InputProperties) {
   const [value, setValue] = useState("")

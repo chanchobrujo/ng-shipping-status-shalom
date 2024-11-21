@@ -1,13 +1,10 @@
 import React from 'react';
-import './App.css';
-import CustomButton from "./components/CustomButton";
-import CustomInput from "./components/CustomInput";
+import CustomButton from "../custom-ui/CustomButton";
+import CustomInput from "../custom-ui/CustomInput";
 
-function InitForm() {
+function FormInit() {
   return (
-    <div style={{
-      width: '20%'
-    }}>
+    <div style={{width: '100%'}}>
       <div style={{
         padding: '.5%',
         textAlign: 'center',
@@ -22,6 +19,15 @@ function InitForm() {
       <div style={{
         padding: '3.5% 5% 3.5% 5%'
       }}>
+        <p>
+          Ingresa los datos de tu pedido shalom, te mostraremos la ruta actual de tu pedido, e iremos notificando el
+          trayecto del mismo, via email.
+        </p>
+      </div>
+      <div style={{
+        padding: '3.5% 5% 3.5% 5%'
+      }}>
+        <CustomInput width={'80%'} title={'Correo para enviar notificaciones'} inputType={'email'}/>
         <CustomInput width={'80%'} title={'Numero de seguimiento'} inputType={'number'}/>
         <CustomInput width={'30%'} title={'Codigo'}/>
       </div>
@@ -38,4 +44,4 @@ function InitForm() {
   );
 }
 
-export default InitForm;
+export default FormInit;
