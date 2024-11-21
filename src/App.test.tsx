@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import InitForm from './InitForm';
+import {render, screen} from '@testing-library/react';
+import FormInit from './components/form-init/FormInit';
 
 test('renders learn react link', () => {
-  render(<InitForm />);
+  render(<FormInit/>);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
