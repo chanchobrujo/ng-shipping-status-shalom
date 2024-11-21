@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import FormInit from "./components/form-init/FormInit";
+import ListShipping from "./components/list-shipping/ListShipping";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 root.render(
   <React.StrictMode>
-    <App />
+    <div style={{
+      gap: '5%',
+      display: 'grid',
+      padding: '3% 10% 3% 10%',
+      gridTemplateColumns: '25% 70%',
+    }}>
+      <FormInit/>
+      <ListShipping/>
+    </div>
   </React.StrictMode>
 );
 
