@@ -8,7 +8,7 @@ on:
 jobs:
   build_and_push:
     env:
-      image_name: chanchodev/ng-shipping-status-shalom
+      image_name: ng-shipping-status-shalom
       image_version: latest
 
     runs-on: ubuntu-latest
