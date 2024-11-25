@@ -1,21 +1,26 @@
 import React from "react";
-import {ButtonProperties} from "../../model/properties";
+import {HtmlButtonProperties} from "../../core/model/properties";
 
-function CustomButton(props: ButtonProperties) {
+function CustomButton({onClick, children, properties, ...props}: HtmlButtonProperties) {
   return (
-    <div style={{
-      width: '100%',
-      cursor: 'pointer',
-      textAlign: 'center',
-      borderRadius: '10%',
-      backgroundColor: props.contentColor || 'white'
-    }}>
-      <h3 style={{
-        color: props.titleColor
+    <button
+      {...props}
+      onClick={onClick}
+      style={{
+        width: '100%',
+        border: 'none',
+        cursor: 'pointer',
+        textAlign: 'center',
+        borderRadius: '5%',
+        backgroundColor: properties.contentColor || 'white'
       }}>
-        {props.title}
-      </h3>
-    </div>
+      <h4
+        style={{
+          color: properties.titleColor
+        }}>
+        {properties.title}
+      </h4>
+    </button>
   );
 }
 

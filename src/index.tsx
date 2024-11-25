@@ -2,22 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 import FormInit from "./components/form-init/FormInit";
 import ListShipping from "./components/list-shipping/ListShipping";
 
+export const MySwal = withReactContent(Swal);
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <div style={{
-      gap: '5%',
-      display: 'grid',
-      padding: '3% 10% 3% 10%',
-      gridTemplateColumns: '25% 70%',
-    }}>
-      <FormInit/>
-      <ListShipping/>
+    <div className={'content'}>
+      <div className={'content-a'}>
+        <FormInit/>
+      </div>
+      <div className={'content-b'}>
+        <ListShipping/>
+      </div>
     </div>
   </React.StrictMode>
 );

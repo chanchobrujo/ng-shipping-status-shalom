@@ -1,11 +1,19 @@
-import React, {useState} from "react";
-import {InputProperties} from "../../model/properties";
+import {FC} from "react";
+import {HtmlInputProperties} from "../../core/model/properties";
 
-function CustomInput(props: InputProperties) {
-  const [value, setValue] = useState("")
-
-  const handleChange = (event: any) => setValue(event.target.value)
-
+export const CustomInput: FC<HtmlInputProperties> = (
+  {
+    type,
+    label,
+    value,
+    placeholder,
+    disabled,
+    onChange,
+    width,
+    titleColor
+  }
+) => {
+  const color: string = titleColor || 'black';
   return (
     <div
       style={{
@@ -13,24 +21,24 @@ function CustomInput(props: InputProperties) {
       }}>
       <div
         style={{
-          paddingBottom: '1.5%',
-          color: props.titleColor || 'black'
+          color,
+          paddingBottom: '2%',
         }}>
-        {props.title}
+        {label}
       </div>
       <input
         style={{
+          width,
+          color,
           outline: 'none',
-          width: props.width,
           padding: '2% 2.5% 2% 2.5%',
-          color: props.titleColor || 'black'
         }}
-        type={props.inputType || 'text'}
+        type={type}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
+        disabled={disabled}
+        placeholder={placeholder}
       />
     </div>
-  );
+  )
 }
-
-export default CustomInput;

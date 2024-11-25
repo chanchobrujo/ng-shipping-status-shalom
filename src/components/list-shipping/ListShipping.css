@@ -1,5 +1,6 @@
 th, td {
     padding: .5%;
+    word-wrap: break-word;
     border-bottom: 1px solid #ddd;
 }
 
@@ -19,4 +20,20 @@ td {
 tbody:hover {
     color: white;
     background-color: #ee2a2f;
+}
+
+.content-table {
+    backgroundColor: 'white'
+}
+
+.style-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+@media only screen and (max-width: 576px) {
+    .style-table {
+        width: 150%;
+        table-layout: fixed;
+    }
 }

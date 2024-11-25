@@ -1,92 +1,20 @@
 import './ListShipping.css';
-import CustomButton from "../custom-ui/CustomButton";
-import {useEffect, useState} from "react";
-import {ShippingStatusResponse} from "../../model/responses";
+import React, {useEffect, useState} from "react";
+import ItemListShipping from "./item-list-shipping/ItemListShipping";
+import {ShippingStatusRequest} from "../../core/model/request";
 
-interface ItemListShippingProperties {
-  order: ShippingStatusResponse;
-}
 
 function ListShipping() {
-  const [orders, setOrders] = useState<Array<ShippingStatusResponse>>([]);
+  const [requests, setRequests] = useState<Array<ShippingStatusRequest>>([]);
 
   useEffect(() => {
-    const r1: ShippingStatusResponse = {
-      "completo": true,
-      "_origen": "AV. PRIMAVERA 120, LIMA, LIMA",
-      "_destino": "ANCÓN SANTA ROSA, LIMA, LIMA",
-      "trackingNumber": "35016071",
-      "contenido": "1 MINI PAQUETERIA XS",
-      "fecha": new Date(),
-      "remitente": {
-        "documento": "76228830",
-        "nombre": "HANS ROBIN ZOEGER GUEVARA"
-      },
-      "tracking": [
-        {
-          "truck": "480027",
-          "date": new Date()
-        },
-        {
-          "truck": null,
-          "date": new Date()
-        }
-      ]
-    };
-    const r2: ShippingStatusResponse = {
-      "completo": false,
-      "_origen": "AV. PRIMAVERA 120, LIMA, LIMA",
-      "_destino": "ANCÓN SANTA ROSA, LIMA, LIMA",
-      "trackingNumber": "35016072",
-      "contenido": "1 MINI PAQUETERIA XS",
-      "fecha": new Date(),
-      "remitente": {
-        "documento": "76228830",
-        "nombre": "HANS ROBIN ZOEGER GUEVARA"
-      },
-      "tracking": [
-        {
-          "truck": "480027",
-          "date": new Date()
-        },
-        {
-          "truck": null,
-          "date": new Date()
-        }
-      ]
-    };
-    //setOrders([...orders, ...[r1, r2]]);
-    setOrders([r1, r2]);
+    const trackings = localStorage.getItem("trackings");
+    if (!!trackings) setRequests(JSON.parse(trackings) as Array<ShippingStatusRequest>);
   }, []);
 
-  function ItemListShipping(props: ItemListShippingProperties) {
-    return (
-      <tbody>
-      <tr>
-        <td>
-          <b>{props.order.trackingNumber}</b>
-        </td>
-        <td>{props.order._destino}</td>
-        <td>{props.order.remitente.nombre}</td>
-        <td>{props.order.fecha.toString()}</td>
-        <td>
-          {props.order.completo ? 'Si' : 'No'}
-        </td>
-        <td>
-          <CustomButton title={'Ver detalle'} titleColor={'#ee2a2f'}/>
-        </td>
-      </tr>
-      </tbody>
-    )
-  }
-
   return (
-    <div style={{
-      backgroundColor: 'white'
-    }}>
-      <table style={{
-        width: '100%'
-      }}>
+    <div className={'content-table'}>
+      <table className={'style-table'}>
         <thead>
         <tr>
           <th>Numero de seguimiento</th>
@@ -94,10 +22,12 @@ function ListShipping() {
           <th>Remitente</th>
           <th>Fecha</th>
           <th>Envio completado?</th>
-          <th></th>
+          <th>Acciones</th>
         </tr>
         </thead>
-        {orders.map((order: ShippingStatusResponse) => <ItemListShipping order={order} key={order.trackingNumber}/>)}
+        {requests.map((req: ShippingStatusRequest) => {
+          return <ItemListShipping req={req} key={req.number}/>;
+        })}
       </table>
     </div>
   )
