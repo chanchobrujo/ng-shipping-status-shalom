@@ -37,3 +37,17 @@ jobs:
       - name: Push the Docker image
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.image_name }}:${{ env.image_version }}
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            cd /home/administrator/applications/shipping-shalom
+            echo ${{ secrets.VPS_PASSWORD }} | sudo docker stop ${{ env.image_name }}
+            echo ${{ secrets.VPS_PASSWORD }} | sudo docker rm ${{ env.image_name }}
+            echo ${{ secrets.VPS_PASSWORD }} | sudo -S docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.image_name }}:${{ env.image_version }}
+            echo ${{ secrets.VPS_PASSWORD }} | sudo -S docker compose up -d --build
+            echo ${{ secrets.VPS_PASSWORD }} | sudo -S docker system prune -a

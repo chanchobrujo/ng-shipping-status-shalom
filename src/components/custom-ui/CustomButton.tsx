@@ -1,5 +1,5 @@
 import React from "react";
-import {HtmlButtonProperties} from "../../model/properties";
+import {HtmlButtonProperties} from "../../core/model/properties";
 
 function CustomButton({onClick, children, properties, ...props}: HtmlButtonProperties) {
   return (

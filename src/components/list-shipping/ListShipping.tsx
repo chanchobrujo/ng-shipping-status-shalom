@@ -1,20 +1,15 @@
 import './ListShipping.css';
 import React, {useEffect, useState} from "react";
-import {ShippingStatusResponse} from "../../model/responses";
-import {ShippingStatusRequest} from "../../model/request";
 import ItemListShipping from "./item-list-shipping/ItemListShipping";
+import {ShippingStatusRequest} from "../../core/model/request";
 
 
 function ListShipping() {
-  const [orders, setOrders] = useState<Array<ShippingStatusResponse>>([]);
+  const [requests, setRequests] = useState<Array<ShippingStatusRequest>>([]);
 
   useEffect(() => {
-    let list: Array<ShippingStatusRequest>;
     const trackings = localStorage.getItem("trackings");
-    if (!!trackings) {
-      list = JSON.parse(trackings) as Array<ShippingStatusRequest>;
-
-    }
+    if (!!trackings) setRequests(JSON.parse(trackings) as Array<ShippingStatusRequest>);
   }, []);
 
   return (
@@ -30,7 +25,9 @@ function ListShipping() {
           <th>Acciones</th>
         </tr>
         </thead>
-        {orders.map((order: ShippingStatusResponse) => <ItemListShipping order={order} key={order.trackingNumber}/>)}
+        {requests.map((req: ShippingStatusRequest) => {
+          return <ItemListShipping req={req} key={req.number}/>;
+        })}
       </table>
     </div>
   )

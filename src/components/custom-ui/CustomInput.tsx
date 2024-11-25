@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {HtmlInputProperties} from "../../model/properties";
+import {HtmlInputProperties} from "../../core/model/properties";
 
 export const CustomInput: FC<HtmlInputProperties> = (
   {

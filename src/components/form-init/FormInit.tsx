@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import CustomButton from "../custom-ui/CustomButton";
 import {CustomInput} from "../custom-ui/CustomInput";
-import {ShippingStatusRequest} from "../../model/request";
+import {ShippingStatusRequest} from "../../core/model/request";
 
 function FormInit() {
   const padding: string = '3.5% 5% 3.5% 5%';
