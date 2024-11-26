@@ -28,6 +28,8 @@ function FormInit() {
         list = [order];
       }
       localStorage.setItem("trackings", JSON.stringify(list));
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
     }
   }
 

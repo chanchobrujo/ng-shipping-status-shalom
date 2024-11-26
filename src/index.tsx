@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
 import FormInit from "./components/form-init/FormInit";
-import ListShipping from "./components/list-shipping/ListShipping";
+import ListShipping from "./components/list-shipping/list-shipping/ListShipping";
 
 export const MySwal = withReactContent(Swal);
 const root = ReactDOM.createRoot(

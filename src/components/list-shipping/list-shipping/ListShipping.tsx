@@ -1,7 +1,7 @@
 import './ListShipping.css';
 import React, {useEffect, useState} from "react";
-import ItemListShipping from "./item-list-shipping/ItemListShipping";
-import {ShippingStatusRequest} from "../../core/model/request";
+import ItemListShipping from "../item-list-shipping/ItemListShipping";
+import {ShippingStatusRequest} from "../../../core/model/request";
 
 
 function ListShipping() {
