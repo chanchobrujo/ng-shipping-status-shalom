@@ -4,7 +4,7 @@ interface PersonResponse {
 }
 
 export interface ShippingStatusResponse {
-  fecha: string;
+  fecha: Date;
   email?: string;
   completo: boolean;
   _origen: string;
@@ -12,11 +12,11 @@ export interface ShippingStatusResponse {
   contenido: string;
   trackingNumber: string;
   remitente: PersonResponse;
-  tracking: TrackingResponse[];
+  tracking: Array<TrackingResponse>;
   //destinatario: Map<string, string>;
 }
 
 export interface TrackingResponse {
-  date: string;
+  date: Date;
   truck: null | string;
 }
