@@ -28,7 +28,8 @@ const ViewModalTrackingDetails = (order: ShippingStatusResponse) => {
   }
 
   const detailTracking = () => {
-    return order.tracking.map(tracking => `
+    return (!!order.tracking && order.tracking.length !== 0) ?
+      order.tracking.map(tracking => `
         <br />
         <div>
             <div>
@@ -40,7 +41,7 @@ const ViewModalTrackingDetails = (order: ShippingStatusResponse) => {
               <strong>Fecha: </strong> ${formatDate(tracking.date)}
             </div>
         </div>
-      `).join('');
+      `).join('') : '';
   }
 
   const setEmailInOrder = () => {
@@ -59,11 +60,11 @@ const ViewModalTrackingDetails = (order: ShippingStatusResponse) => {
       preConfirm: async (email) => {
         setEmailShipping({email, number: order.trackingNumber})
           .then(async response => {
-            console.log(response)
             await MySwal.fire({
               icon: "success",
               title: <h2>Guardado correctamente.</h2>,
             });
+            window.location.reload();
           }, () => {
             MySwal.showValidationMessage(`Vuela a intentarlo mas tarde.`);
           })
