@@ -1,6 +1,6 @@
 export const formatDate = (date: Date) => {
   const now = new Date(date);
-  const hour = now.getHours() + ':' + now.getMinutes();
+  const hour = addZeroInTime(now.getHours()) + ':' + addZeroInTime(now.getMinutes());
   const month = addZeroInTime(now.getMonth() + 1);
   return now.getFullYear() + '-' + month + '-' + addZeroInTime(now.getDate()) + ' ' + hour;
 }

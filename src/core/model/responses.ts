@@ -18,5 +18,6 @@ export interface ShippingStatusResponse {
 
 export interface TrackingResponse {
   date: Date;
+  message: string;
   truck: null | string;
 }

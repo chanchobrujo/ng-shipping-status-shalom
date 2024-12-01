@@ -34,7 +34,7 @@ const ViewModalTrackingDetails = (order: ShippingStatusResponse) => {
         <div>
             <div>
               <strong>
-                  ${(!!tracking.truck) ? 'Ultima parada...' : 'Ultimo embarque'}
+                ${tracking.message}
               </strong>
             </div>
             <div>
