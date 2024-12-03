@@ -1,0 +1,51 @@
+<div>
+  <div class="table-content">
+    <div>
+      <strong>
+        #
+      </strong>
+    </div>
+    <div>
+      <strong>
+        Destino
+      </strong>
+    </div>
+    <div>
+      <strong>
+        Quien envia?
+      </strong>
+    </div>
+    <div>
+      <strong>
+        Fecha
+      </strong>
+    </div>
+    <div>
+      <strong>
+        Completado?
+      </strong>
+    </div>
+    <div>
+      <strong>
+      </strong>
+    </div>
+  </div>
+  <br/>
+  <div class="table-content" *ngFor="let item of trackings">
+    <div>{{ item.trackingNumber }}</div>
+    <div>{{ item._destino }}</div>
+    <div>{{ item.remitente['nombre'] }}</div>
+    <div>{{ item.fecha.toString().replace("T", " ") }}</div>
+    <div>{{ item.completo ? 'Si' : 'No' }}</div>
+    <div style="display: grid; grid-template-columns: 50% 50%">
+      <shipping-shalom-button name="Ver"
+                              [colorName]="'white'"
+                              [colorContent]="'#ee2a2f'"
+                              (click)="detail(item)"/>
+      <shipping-shalom-button name="Eliminar"
+                              [colorName]="'#ee2a2f'"
+                              [colorContent]="'white'"
+                              (click)="delete(item)"/>
+    </div>
+  </div>
+</div>

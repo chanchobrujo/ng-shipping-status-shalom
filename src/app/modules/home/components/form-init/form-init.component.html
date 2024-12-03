@@ -1,0 +1,36 @@
+<div style="width: 100%">
+  <form *ngIf="form" [formGroup]="form">
+    <div class="general-form-header">
+      <h1 style="color: white">
+        Ingresar numero de seguimiento y codigo.
+      </h1>
+    </div>
+    <div class="general-form-content">
+      <p>
+        Ingresa los datos de tu pedido shalom, te mostraremos su ruta actual, e iremos notificando el
+        trayecto del mismo, via email.
+      </p>
+    </div>
+    <div class="general-form-content">
+      <shipping-shalom-input [type]="'number'"
+                             [label]="'Numero de tracking'"
+                             [control]="getControl('tracking')"/>
+
+      <shipping-shalom-input [type]="'text'"
+                             [label]="'Codigo de tracking'"
+                             [control]="getControl('code')"/>
+    </div>
+    <div class="content-buttons">
+      <shipping-shalom-button
+        (click)="save()"
+        [name]="'Guardar'"
+        [colorName]="'white'"
+        [colorContent]="'#ee2a2f'"/>
+      <shipping-shalom-button
+        (click)="clear()"
+        [name]="'Limpiar'"
+        [colorContent]="'white'"
+        [colorName]="'#ee2a2f'"/>
+    </div>
+  </form>
+</div>

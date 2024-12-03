@@ -1,0 +1,22 @@
+<div class="content-set-detail">
+
+  <form *ngIf="form" [formGroup]="form">
+    <h2>
+      Agrega un correo electronico para notificarte!
+    </h2>
+    <div>
+      <shipping-shalom-input [type]="'email'"
+                             [label]="'Correo electronico'"
+                             [control]="getControl('email')"/>
+    </div>
+    <div class="footer-doble-button">
+      <shipping-shalom-button name="Agregar correo electronico"
+                              [colorName]="'white '"
+                              (click)="save()"/>
+      <shipping-shalom-button name="Cerrar"
+                              [colorName]="'black'"
+                              [colorContent]="'white'"
+                              (click)="close()"/>
+    </div>
+  </form>
+</div>

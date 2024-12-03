@@ -1,0 +1,42 @@
+<div *ngIf="!!tracking">
+  <div class="content-detail">
+    <div>
+      <strong>Envio completado?</strong> {{ tracking.completo ? 'Si' : 'No' }}<br/>
+    </div>
+    <div>
+      <strong>Fecha: </strong> {{ tracking.fecha.toString().replace("T", " ") }}<br/>
+    </div>
+    <div>
+      <strong>Contenido: </strong>{{ tracking.contenido }}<br/>
+    </div>
+    <div *ngIf="!!tracking.email">
+      <strong>{{ "Correo: " }}</strong>{{ tracking.email }}
+    </div>
+    <div>
+      <strong>Origen: </strong> {{ tracking._origen }}<br/>
+    </div>
+    <div>
+      <strong>Quien envia? </strong>{{ tracking.remitente['nombre'] }}<br/>
+    </div>
+  </div>
+  <div class="content-items-detail">
+    <div *ngFor="let item of tracking.tracking" class="mini-item-detail">
+      <strong>
+        {{ item.message }}
+      </strong>
+      <p>
+        {{ item.date.toString().replace("T", " ") }}
+      </p>
+    </div>
+  </div>
+  <div [class]="!tracking.email ? 'footer-doble-button' : ''">
+    <shipping-shalom-button *ngIf="!tracking.email"
+                            name="Agregar un correo"
+                            [colorName]="'white'"
+                            (click)="addEmail()"/>
+    <shipping-shalom-button name="Cerrar"
+                            [colorName]="'black'"
+                            [colorContent]="'white'"
+                            (click)="close()"/>
+  </div>
+</div>

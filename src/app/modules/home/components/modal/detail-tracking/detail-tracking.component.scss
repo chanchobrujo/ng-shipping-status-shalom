@@ -1,0 +1,23 @@
+.content-detail {
+  text-align: left;
+  gap: 17px;
+  padding: 2.5%;
+}
+
+.mini-item-detail {
+  text-align: center;
+  align-items: center
+}
+
+.content-items-detail {
+  padding: 2.5%;
+  gap: 2.5px;
+  display: grid
+}
+
+.footer-doble-button {
+  gap: 2%;
+  padding: 2.5%;
+  display: grid;
+  grid-template-columns: 49% 49%;
+}

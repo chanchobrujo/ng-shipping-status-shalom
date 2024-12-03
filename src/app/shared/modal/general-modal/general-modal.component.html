@@ -1,0 +1,18 @@
+<div style="padding: 2.5%">
+  <div style="text-align: center">
+    <h2>
+      {{ properties.title }}
+    </h2>
+  </div>
+  <div style="text-align: center" *ngIf="!!properties.message">
+    <p>
+      {{ properties.message }}
+    </p>
+  </div>
+  <div>
+    <shipping-shalom-button name="Cerrar"
+                            [colorName]="'black'"
+                            [colorContent]="'white'"
+                            (click)="close()"/>
+  </div>
+</div>
